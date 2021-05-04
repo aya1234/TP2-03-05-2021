@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 1300px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello! ✅</h1>
+    <h5>Agences</h5>
+    <a href="{{ path('ajouter_agence') }}">Ajouter</a>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">TelAgence</th>
+      <th scope="col">AdresseVille</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for agence in agences %}
+    <tr>
+      <th scope="row">{{ agence.id }}</th>
+      <td>{{ agence.nom }}</td>
+      <td>{{ agence.telAgence }}</td>
+      <td>{{ agence.adresseVille }}</td>
+      <td>
+        <a href="{{ path('consulter_agence',{id:agence.id}) }}">Voir</a>
+        <a href="{{ path('modifier_agence' ,{id:agence.id}) }}">Modifier</a>
+        <a href="{{ path('supprimer_agence',{id:agence.id}) }}">Supprimer</a>
+      </td>
+    </tr>
+   {% endfor %} 
+  </tbody>
+</table>
+<br><br>
+    <h5>Cars</h5>
+    <a href="{{ path('ajouter_car') }}">Ajouter</a>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Matricule</th>
+      <th scope="col">Marque</th>
+      <th scope="col">Carburant</th>
+      <th scope="col">NbrPlaces</th>
+      <th scope="col">Description</th>
+      <th scope="col">Disponibilité</th>
+      <th scope="col">datemiseencirculation</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for car in cars %}
+    <tr>
+      <td>{{ car.matricule }}</td>
+      <td>{{ car.marque }}</td>
+      <td>{{ car.carburant }}</td>
+      <td>{{ car.nbrPlaces }}</td>
+      <td>{{ car.description }}</td>
+      <td>{{ car.Disponibilite }}</td>
+      <td>{{ car.datemiseencirculation }}</td>
+      <td>
+        <a href="{{ path('consulter_car',{id:car.id}) }}">Voir</a>
+        <a href="{{ path('modifier_car' ,{id:car.id}) }}">Modifier</a>
+        <a href="{{ path('supprimer_car',{id:car.id}) }}">Supprimer</a>
+      </td>
+    </tr>
+   {% endfor %} 
+  </tbody>
+</table>
+<br><br>
+    <h5>Voitures</h5>
+     <a href="">Ajouter</a>
+   <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Marque</th>
+      <th scope="col">Couleur</th>
+      <th scope="col">Description</th>
+      <th scope="col">Nombre de place</th>
+      <th scope="col">Nom Agence</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for voiture in voitures %}
+    <tr>
+      <th scope="row">{{ voiture.Marque }}</th>
+      <td>{{ voiture.Couleur }}</td>
+      <td>{{ voiture.Description }}</td>
+      <td>{{ voiture.Nombredeplace }}</td>
+      <td>{{ voiture.NomAgence }}</td>
+    </tr>
+   {% endfor %} 
+  </tbody>
+</table>
+</div>
+{% endblock %}
